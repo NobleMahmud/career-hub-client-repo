@@ -1,7 +1,6 @@
 import React from 'react';
 import animated from '../../../public/animated5.gif'
 
-
 const Home = () => {
     return (
         <div className=' w-full bg-cover flex items-center'>
