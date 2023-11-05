@@ -84,10 +84,7 @@ const Footer = () => {
         <hr className="mt-16 mb-10 border-gray-800" />
 
         <div className="flex flex-wrap items-center justify-between">
-        {/* <video controls autoPlay muted loop className='appearance-none w-1/5'>
-                            <source src={logo} type="video/mp4"/>
-                                Your browser does not support the video tag.
-                        </video> */}
+        {/* logo */}
 
             <ul className="flex items-center space-x-3 md:order-3">
                 <li>
