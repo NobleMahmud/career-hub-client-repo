@@ -1,0 +1,135 @@
+
+[
+        {
+          "employer": "Noble Mahmud",
+          "logo":"https://i.ibb.co/nwCpSz9/21319060284761-5d5beadb99a82-removebg-preview.png",
+          "jobTitle": "Web Developer",
+          "postingDate": "2023-11-01",
+          "applicationDeadline": "2023-11-31",
+          "salaryRange": "$50,000 - $70,000",
+          "applicants":0,
+          "img": "https://i.ibb.co/0mS51Wb/hiring-full-stack-web-digital-div-UK.jpg",
+          "jobCategory": "On Site",
+          "jobDescription": "ABC Company is searching for a skilled Web Developer to join our on-site team. In this role, you will be responsible for designing, building, and maintaining our web applications, ensuring they meet the highest standards of quality and functionality. You'll work closely with a dynamic team, contribute to innovative projects, and play a key role in shaping our digital presence. If you're passionate about web development and are eager to make an impact, apply now to be a part of our creative and collaborative environment."
+        },
+        {
+          "employer": "Noble Mahmud",
+          "logo":"https://i.ibb.co/tJxK54d/attachment-127736921.jpg",
+          "jobTitle": "Software Engineer",
+          "postingDate": "2023-11-02",
+          "applicationDeadline": "2023-11-20",
+          "salaryRange": "$60,000 - $80,000",
+          "applicants":0,
+          "img": "https://i.ibb.co/Hgt6B3b/3e7beee0930b5847019e754796291974.jpg",
+          "jobCategory": "On Site",
+          "jobDescription": "XYZ Corporation invites talented Software Engineers to join our on-site team. You'll have the opportunity to work on cutting-edge software projects, collaborate with a skilled team, and shape the future of technology. We offer a supportive, dynamic work environment and competitive compensation. If you're passionate about software development, apply now to be part of our innovative journey."
+        },
+        {
+          "employer": "Tech Innovators",
+          "logo":"https://i.ibb.co/yy7HYhC/shortpoint-58acf15f631d3a29f5b315dea873c814cc9cc28fb8476c8258267b7ad194ce58.jpg",
+          "jobTitle": "Front-end Developer",
+          "postingDate": "2023-11-03",
+          "applicationDeadline": "2023-12-20",
+          "salaryRange": "$45,000 - $65,000",
+          "applicants":0,
+          "img": "https://i.ibb.co/X8WvcKV/Front-end-Developer-1024x533.png",
+          "jobCategory": "On Site",
+          "jobDescription": "Tech Innovators Ltd is in search of a passionate Front-end Developer to craft exceptional user interfaces for our web applications. Your role will be pivotal in creating visually appealing, user-friendly designs. Join our dynamic on-site team and be part of a collaborative and innovative environment. If you're driven to make a difference through front-end development, apply today and embark on an exciting journey with us."
+        },
+        {
+          "employer": "Digital Solutions",
+          "logo":"https://i.ibb.co/HxjLZGM/1600w-9q-If7d-AGTXU.webp",
+          "jobTitle": "Remote Full-stack Developer",
+          "postingDate": "2023-11-04",
+          "applicationDeadline": "2023-12-17",
+          "salaryRange": "$55,000 - $75,000",
+          "applicants":0,
+          "img": "https://i.ibb.co/c3x5xrb/Were-Hiring-1200x628-2x-1-1260x661.png",
+          "jobCategory": "Remote",
+          "jobDescription": "Digital Solutions Inc is hiring a remote full-stack developer to work on exciting web projects. Enjoy the flexibility of remote work while contributing to our team's success."
+        },
+        {
+          "employer": "Noble Mahmud",
+          "logo":"https://i.ibb.co/3NrD4Bh/sketchdeck-21019ab18010d601ea62f8da577d836069e6dd8eed565819e4f6eab45ba798db.jpg",
+          "jobTitle": "Remote UX Designer",
+          "postingDate": "2023-11-01",
+          "applicationDeadline": "2023-11-07",
+          "salaryRange": "$50,000 - $70,000",
+          "applicants":0,
+          "img": "https://i.ibb.co/BcjbFMf/ux-design-825x458.jpg",
+          "jobCategory": "Remote",
+          "jobDescription": "Join Online Ventures Ltd as a remote UX designer and help create user-friendly experiences for our web applications. Work from anywhere and make a difference!"
+        },
+        {
+          "employer": "Global Tech Innovations",
+          "logo":"https://i.ibb.co/xD2CCBS/fb7f6ece9e71108fcce289c0ad1e0578744f4323-352x349-removebg-preview.png",
+          "jobTitle": "Remote Data Analyst",
+          "postingDate": "2023-11-01",
+          "applicationDeadline": "2023-11-06",
+          "salaryRange": "$45,000 - $65,000",
+          "applicants":0,
+          "img": "https://i.ibb.co/gz63KjT/Data-Analyst-Hiring-Image.png",
+          "jobCategory": "Remote",
+          "jobDescription": "Global Tech Innovations is seeking a remote data analyst to analyze and interpret data for our projects. Join our remote team and contribute to data-driven decisions."
+        },
+        {
+          "employer": "Digital Solutions",
+          "logo":"https://i.ibb.co/N1JYvWT/insynq4ea01wgoto6obi.webp",
+          "jobTitle": "Hybrid Backend Developer",
+          "postingDate": "2023-11-07",
+          "applicationDeadline": "2023-12-16",
+          "salaryRange": "$60,000 - $80,000",
+          "applicants":0,
+          "img": "https://i.ibb.co/Hg9CKFP/1684246671799.jpg",
+          "jobCategory": "Hybrid",
+          "jobDescription": "Innovate Technologies is looking for a hybrid backend developer to work both on-site and remotely. Join us and be part of our innovative projects."
+        },
+        {
+          "employer": "Digital Solutions",
+          "logo":"https://i.ibb.co/w6N4Nf6/83446456-software-company-logo-template-design-vector-illustration.jpg",
+          "jobTitle": "Hybrid Project Manager",
+          "postingDate": "2023-11-08",
+          "applicationDeadline": "2023-11-22",
+          "salaryRange": "$70,000 - $90,000",
+          "applicants":0,
+          "img": "https://i.ibb.co/HTVsYwM/1694100505962.jpg",
+          "jobCategory": "Hybrid",
+          "jobDescription": "Dynamic Innovations Ltd is seeking a hybrid project manager to lead our projects on-site and remotely. If you're a dynamic leader, apply now!"
+        },
+        {
+          "employer": "Noble Mahmud",
+          "logo":"https://i.ibb.co/zhHx9Xy/ux-letter-logo-icon-design-2537360.jpg",
+          "jobTitle": "Hybrid UI/UX Designer",
+          "postingDate": "2023-11-09",
+          "applicationDeadline": "2023-12-23",
+          "salaryRange": "$55,000 - $75,000",
+          "applicants":0,
+          "img": "https://i.ibb.co/f946Gfn/cover-roi-of-ux-convince-executives-75923b69362a90a12af93ed15f98cca8.png",
+          "jobCategory": "Hybrid",
+          "jobDescription": "Futuristic Solutions Inc is hiring a hybrid UI/UX designer to create exceptional user experiences. Join us for a blend of on-site and remote work."
+        },
+        {
+          "employer": "Flexi Workforce Ltd",
+          "logo":"https://i.ibb.co/bJ6qhNr/imagepreview.jpg",
+          "jobTitle": "Part-time Content Writer",
+          "postingDate": "2023-11-10",
+          "applicationDeadline": "2023-11-25",
+          "salaryRange": "$25,000 - $35,000",
+          "applicants":0,
+          "img": "https://i.ibb.co/qNWmYd2/1690405240862.jpg",
+          "jobCategory": "Part Time",
+          "jobDescription": "Flexi Workforce Ltd is seeking a part-time content writer to create engaging content. Enjoy flexibility and a competitive hourly rate."
+        },
+        {
+          "employer": "Noble Mahmud",
+          "logo":"https://i.ibb.co/hgbPRCd/Mega-Fon-logo-without-text-svg.png",
+          "jobTitle": "Part-time Marketing Specialist",
+          "postingDate": "2023-10-11",
+          "applicationDeadline": "2023-10-26",
+          "salaryRange": "$30,000 - $40,000",
+          "applicants":0,
+          "img": "https://i.ibb.co/hRJnvsv/preview.webp",
+          "jobCategory": "Part Time",
+          "jobDescription": "Join Local Startups Co. as a part-time marketing specialist and help us promote our products and services. Flexible hours and competitive pay!"
+        }
+    ]
