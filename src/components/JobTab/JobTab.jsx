@@ -1,9 +1,7 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import JobTabCard from './OnSiteCard';
 import OnSiteCard from './OnSiteCard';
 import RemoteCard from './RemoteCard';
-import Hybrid from './HybridCard';
 import HybridCard from './HybridCard';
 import PartTimeCard from './PartTimeCard';
 import AllJobsCard from './AllJobsCard';
@@ -13,7 +11,11 @@ const JobTab = ({jobs}) => {
     const remote = jobs.filter(job=>job.jobCategory==="Remote");
     const hybrid = jobs.filter(job=>job.jobCategory==="Hybrid");
     const partTime = jobs.filter(job=>job.jobCategory==="Part Time");
-    console.log(onSite);
+    console.log(remote);
+
+    const handleDetails = id =>{
+        console.log(id);
+    }
     return (
         <div>
             <Tabs>
@@ -28,35 +30,35 @@ const JobTab = ({jobs}) => {
                 <TabPanel>
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mt-14 mb-10'>
                     {
-                        jobs.map((card, idx)=><AllJobsCard key={idx} card={card}></AllJobsCard>)
+                        jobs.map((card, idx)=><AllJobsCard key={idx} card={card} handleDetails={handleDetails}></AllJobsCard>)
                     }
                     </div>
                 </TabPanel>
                 <TabPanel>
                     <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mt-14 mb-10'>
                     {
-                        onSite.map((card, idx)=><OnSiteCard key={idx} card={card}></OnSiteCard>)
+                        onSite.map((card, idx)=><OnSiteCard key={idx} card={card} handleDetails={handleDetails}></OnSiteCard>)
                     }
                     </div>
                 </TabPanel>
                 <TabPanel>
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mt-14 mb-10'>
                     {
-                        remote.map((card, idx)=><RemoteCard key={idx} card={card}></RemoteCard>)
+                        remote.map((card, idx)=><RemoteCard key={idx} card={card} handleDetails={handleDetails}></RemoteCard>)
                     }
                     </div>
                 </TabPanel>
                 <TabPanel>
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mt-14 mb-10'>
                     {
-                        hybrid.map((card, idx)=><HybridCard key={idx} card={card}></HybridCard>)
+                        hybrid.map((card, idx)=><HybridCard key={idx} card={card} handleDetails={handleDetails}></HybridCard>)
                     }
                     </div>
                 </TabPanel>
                 <TabPanel>
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mt-14 mb-10'>
                     {
-                        partTime.map((card, idx)=><PartTimeCard key={idx} card={card}></PartTimeCard>)
+                        partTime.map((card, idx)=><PartTimeCard key={idx} card={card} handleDetails={handleDetails}></PartTimeCard>)
                     }
                     </div>
                 </TabPanel>
