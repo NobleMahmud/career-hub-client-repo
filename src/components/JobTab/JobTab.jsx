@@ -6,6 +6,7 @@ import RemoteCard from './RemoteCard';
 import Hybrid from './HybridCard';
 import HybridCard from './HybridCard';
 import PartTimeCard from './PartTimeCard';
+import AllJobsCard from './AllJobsCard';
 
 const JobTab = ({jobs}) => {
     const onSite = jobs.filter(job=>job.jobCategory==="On Site");
@@ -14,15 +15,23 @@ const JobTab = ({jobs}) => {
     const partTime = jobs.filter(job=>job.jobCategory==="Part Time");
     console.log(onSite);
     return (
-        <div className=''>
+        <div>
             <Tabs>
                 <TabList>
+                    <Tab>All Jobs</Tab>
                     <Tab>On Site</Tab>
                     <Tab>Remote</Tab>
                     <Tab>Hybrid</Tab>
                     <Tab>Part Time</Tab>
                 </TabList>
 
+                <TabPanel>
+                <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mt-14 mb-10'>
+                    {
+                        jobs.map((card, idx)=><AllJobsCard key={idx} card={card}></AllJobsCard>)
+                    }
+                    </div>
+                </TabPanel>
                 <TabPanel>
                     <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mt-14 mb-10'>
                     {

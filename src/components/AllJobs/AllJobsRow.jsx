@@ -31,7 +31,7 @@ const AllJobsRow = ({allJob}) => {
         <th>
           { status==='confirm' ? <span className='text-primary font-bold'>Confirmed</span>
           :
-            <button onClick={()=>handleBookingConfirm(_id)} className="btn btn-ghost btn-xs ">Please Confirm</button>}
+            <button onClick={()=>handleBookingConfirm(_id)} className="btn btn-ghost btn-xs ">Details</button>}
         </th>
       </tr>
     );

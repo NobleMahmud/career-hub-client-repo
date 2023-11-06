@@ -30,7 +30,13 @@ const Home = () => {
         <div className='container flex justify-center mt-8 mb-12'>
                 <Search></Search> 
                 </div>  
+            <div className='mt-32'>
+                <div className='flex flex-col lg:flex-row'>
+                <h2 className='font-bold text-5xl lg:mt-28 justify-center text-center'><span className='text-blue-900'>Dive deep</span> into different types of <span className='text-[#545454]'>JOBS</span></h2>
+                <img className='w-[300px] mx-auto lg:w-4/12 rounded-full justify-end items-end' src="https://i.ibb.co/jZVtFtD/animated8.gif" alt="" />
+                </div>
             <JobTab jobs={jobs}></JobTab>
+            </div>
         </div>
     );
 };
