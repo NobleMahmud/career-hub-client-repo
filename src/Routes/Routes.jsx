@@ -11,11 +11,13 @@ import LogIn from "../components/LogIn/LogIn";
 import Register from "../components/Register/Register";
 import JobDetails from "../components/JobDetails/JobDetails";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
 
   export const router = createBrowserRouter([
     {
       path: "/",
       element: <LayOut></LayOut>,
+      errorElement:<ErrorPage></ErrorPage>,
       children: [
         {
           path: "/",

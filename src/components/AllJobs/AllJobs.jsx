@@ -20,9 +20,6 @@ const AllJobs = () => {
           <thead>
             <tr>
               <th>
-                <label>
-                  <input type="checkbox" className="checkbox" />
-                </label>
               </th>
               <th>Posted By</th>
               <th>Title</th>

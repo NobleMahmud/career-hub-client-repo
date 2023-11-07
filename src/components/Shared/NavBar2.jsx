@@ -69,7 +69,11 @@ import './nav.css'
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <NavLink to="/" className="flex items-center">
+        <NavLink to="/" 
+        className={({ isActive, isPending }) =>
+        isPending ? "pending" : isActive ? " font-bold  rounded text-blue-600 py-2 px-3 bg-gray-200" : "font-bold text-gray-600 "
+      }
+        >
           Home
         </NavLink>
       </Typography>
@@ -79,7 +83,11 @@ import './nav.css'
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <NavLink to="/blogs" className="flex items-center">
+        <NavLink to="/blogs" 
+         className={({ isActive, isPending }) =>
+         isPending ? "pending" : isActive ? " font-bold  rounded text-blue-600 py-2 px-3 bg-gray-200" : "font-bold text-gray-600 "
+       }
+        >
           Blogs
         </NavLink>
       </Typography>
@@ -89,7 +97,11 @@ import './nav.css'
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <NavLink to="/alljobs" className="flex items-center">
+        <NavLink to="/alljobs" 
+         className={({ isActive, isPending }) =>
+         isPending ? "pending" : isActive ? " font-bold  rounded text-blue-600 py-2 px-3 bg-gray-200" : "font-bold text-gray-600 "
+       }
+        >
           All Jobs
         </NavLink>
       </Typography>
@@ -100,7 +112,11 @@ import './nav.css'
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <NavLink to="/postjob" className="flex items-center">
+        <NavLink to="/postjob" 
+         className={({ isActive, isPending }) =>
+         isPending ? "pending" : isActive ? " font-bold  rounded text-blue-600 py-2 px-3 bg-gray-200" : "font-bold text-gray-600 "
+       }
+        >
           Post Job
         </NavLink>
       </Typography>
@@ -114,7 +130,11 @@ import './nav.css'
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <NavLink to="/appliedjobs" className="flex items-center">
+        <NavLink to="/appliedjobs" 
+         className={({ isActive, isPending }) =>
+         isPending ? "pending" : isActive ? " font-bold  rounded text-blue-600 py-2 px-3 bg-gray-200" : "font-bold text-gray-600 "
+       }
+        >
           Applied Jobs
         </NavLink>
       </Typography> 
@@ -127,7 +147,11 @@ import './nav.css'
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <NavLink to="/myjobs" className="flex items-center">
+        <NavLink to="/myjobs" 
+          className={({ isActive, isPending }) =>
+          isPending ? "pending" : isActive ? " font-bold  rounded text-blue-600 py-2 px-3 bg-gray-200" : "font-bold text-gray-600 "
+        }
+        >
           My Jobs
         </NavLink>
       </Typography>

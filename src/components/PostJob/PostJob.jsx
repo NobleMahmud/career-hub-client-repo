@@ -179,6 +179,38 @@ const PostJob = () => {
                   })
                 console.log(data);
             })
+
+            // post to userspostcollection
+
+            const posted ={
+                employer:user?.displayName, 
+                email:user?.email,
+                logo,
+                jobTitle,
+                postingDate:finalDateS,
+                applicationDeadline:finalDateE,
+                salaryRange,
+                applicants,
+                img,
+                jobCategory,
+                jobDescription,
+              }
+
+              fetch('http://localhost:5000/posted',{
+                method: 'POST',
+                headers: {
+                  'content-type': 'application/json'
+                },
+                body: JSON.stringify(posted)
+              })
+              .then(res=>res.json())
+              .then(data=>{
+                console.log(data);
+                if(data.insertedId){
+                  alert('order confirmed')
+                }
+              })
+
     }
     return (
         <div>

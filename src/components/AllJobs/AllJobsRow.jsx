@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom';
 const AllJobsRow = ({allJob}) => {
     const {_id, employer, jobTitle, postingDate, applicationDeadline, salaryRange, jobCategory, jobDescription} = allJob;
 
-    const handleBookingConfirm = e =>{
-        console.log(e);
-    }
+  
     return (
         <tr>
         <th>
