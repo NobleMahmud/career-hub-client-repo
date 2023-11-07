@@ -31,15 +31,15 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
         },
         {
           path: "/postjob",
-          element: <PostJob></PostJob>,
+          element: <PrivateRoute><PostJob></PostJob></PrivateRoute>,
         },
         {
           path: "/appliedjobs",
-          element: <AppliedJobs></AppliedJobs>,
+          element: <PrivateRoute><AppliedJobs></AppliedJobs></PrivateRoute>,
         },
         {
           path: "/myjobs",
-          element: <MyJobs></MyJobs>,
+          element: <PrivateRoute><MyJobs></MyJobs></PrivateRoute>,
         },
         {
           path: "/login",

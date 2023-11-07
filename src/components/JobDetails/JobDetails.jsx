@@ -1,12 +1,44 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import {
+    Button,
+    Dialog,
+    Card,
+    CardHeader,
+    CardBody,
+    CardFooter,
+    Typography,
+    Input,
+    Checkbox,
+  } from "@material-tailwind/react";
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const JobDetails = () => {
+    const {user} = useContext(AuthContext);
     const job = useLoaderData();
   console.log(job);
   const {_id, employer, logo, jobTitle, postingDate, applicationDeadline, salaryRange, applicants, img, jobCategory, jobDescription} = job;
 
     console.log(_id, jobTitle);
+
+    const handleApply = e =>{
+        e.preventDefault();
+        console.log('ok');
+        const form = e.target;
+        const resume = form?.resume?.value;
+        console.log(resume);
+        handleOpen()
+    }
+
+    
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () =>{ 
+        setOpen((cur) => !cur);
+    }
+
+    
+
+    
     return (
 
 <div className="relative flex w-full max-w-[48rem] flex-row mx-auto my-10 rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
@@ -35,7 +67,7 @@ const JobDetails = () => {
     </p>
     <img className='w-12 h-12 rounded-full right-10 absolute' src={logo} alt="" />
     
-    <button className="inline-block">
+    <button onClick={handleOpen} className="inline-block">
     <a  target="_blank"
 	className="group relative overflow-hidden bg-blue-600 focus:ring-4 focus:ring-blue-300 inline-flex items-center px-7 py-2.5 rounded-lg text-white justify-center">
 	<span className="z-40">Apply</span>
@@ -50,6 +82,50 @@ const JobDetails = () => {
 	</div>
 </a>
     </button>
+    <Dialog
+        size="xs"
+        open={open}
+        handler={handleOpen}
+        className="bg-transparent shadow-none"
+      >
+        
+        <Card className="mx-auto w-full max-w-[24rem]">
+          <form onSubmit={handleApply}>
+          <CardBody className="flex flex-col gap-4">
+            <Typography variant="h4" color="blue-gray">
+              Apply to job
+            </Typography>
+           
+           {/* name */}
+            <Typography className="-mb-2" variant="h6">
+              User Name
+            </Typography>
+            <Input name='name' label="Enter User Name" size="lg" type='text' defaultValue={user?.displayName}/>
+            {/*  */}
+            <Typography className="-mb-2" variant="h6">
+              User Email
+            </Typography>
+            <Input name='email' label="Enter User Email" size="lg" type='email' defaultValue={user?.email}/>
+            {/*  */}
+            <Typography className="-mb-2" variant="h6">
+              Resume
+            </Typography>
+            <Input name='resume' label="Enter Resume Link" size="lg" type='text'/>
+
+            <Button variant="gradient" type='submit' fullWidth>
+              Apply
+            </Button>
+          
+          </CardBody>
+            </form>
+          {/* <CardFooter className="pt-0">
+            <Button variant="gradient" onClick={handleOpen} fullWidth>
+              Apply
+            </Button>
+          </CardFooter> */}
+        </Card>
+        
+      </Dialog>
   </div>
 </div>
     );
