@@ -93,7 +93,8 @@ import './nav.css'
           All Jobs
         </NavLink>
       </Typography>
-      <Typography
+      {
+        user?.email ? <Typography
         as="li"
         variant="small"
         color="blue-gray"
@@ -103,7 +104,11 @@ import './nav.css'
           Post Job
         </NavLink>
       </Typography>
-      <Typography
+      :
+      ""
+      }
+      {
+        user?.email ? <Typography
         as="li"
         variant="small"
         color="blue-gray"
@@ -112,8 +117,11 @@ import './nav.css'
         <NavLink to="/appliedjobs" className="flex items-center">
           Applied Jobs
         </NavLink>
-      </Typography>
-      <Typography
+      </Typography> 
+      : ""
+      }
+      {
+        user?.email ? <Typography
         as="li"
         variant="small"
         color="blue-gray"
@@ -123,6 +131,8 @@ import './nav.css'
           My Jobs
         </NavLink>
       </Typography>
+      : ""
+      }
 
       </ul>
     );
@@ -163,10 +173,10 @@ import './nav.css'
 
             {
               user ?
-            <div className="items-center flex  flex-row-reverse gap-0.5 justify-between">
+            <div className="items-center flex justify-between">
               <div className="group relative">
               <img  className="md:w-1/2 w-4/5 rounded-full" src={user.photoURL} alt="" />
-                <p className="absolute opacity-0   transition-opacity top-10 group-hover:opacity-100 duration-300 hover:opacity-100">{user?.displayName}</p>
+                <p className="absolute opacity-0   transition-opacity top-12 -left-3 group-hover:opacity-100 duration-300 hover:opacity-100 text-xs">{user?.displayName}</p>
               </div>
               <Button
               onClick={handleLogOut}

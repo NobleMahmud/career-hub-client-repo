@@ -69,6 +69,12 @@ const Register = () => {
             })
             .catch(error => {
                 console.error(error)
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Email already in use!",
+                    footer: '<a href="#">Try with a different email adress</a>'
+                  });
             })
 
 

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import {
     Button,
@@ -14,6 +14,7 @@ import {
 import { AuthContext } from '../../Providers/AuthProvider';
 
 const JobDetails = () => {
+  
     const {user} = useContext(AuthContext);
     const job = useLoaderData();
   console.log(job);
@@ -25,12 +26,46 @@ const JobDetails = () => {
         e.preventDefault();
         console.log('ok');
         const form = e.target;
+        const name = form?.name?.value;
+        const email = form?.email?.value;
         const resume = form?.resume?.value;
-        console.log(resume);
+        const userInfo = {name, email, resume};
+        console.log(userInfo);
+        const apply ={
+          application_id: _id,
+          name:user?.displayName, 
+          email:user?.email, 
+          resume,
+          jobTitle,
+          jobCategory,
+          jobDescription,
+          logo,
+          img,
+          postingDate,
+          applicationDeadline,
+          salaryRange,
+          applicants
+        }
+
+        fetch('http://localhost:5000/applied',{
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(apply)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data);
+      if(data.insertedId){
+        alert('order confirmed')
+      }
+    })
+
         handleOpen()
     }
 
-    
+
     const [open, setOpen] = React.useState(false);
     const handleOpen = () =>{ 
         setOpen((cur) => !cur);
@@ -42,13 +77,14 @@ const JobDetails = () => {
     return (
 
 <div className="relative flex w-full max-w-[48rem] flex-row mx-auto my-10 rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
-  <div className="relative w-2/5 m-0 overflow-hidden text-gray-700 bg-white rounded-r-none shrink-0 rounded-xl bg-clip-border">
-    <img
-      src={img}
-      alt="image"
-      className="object-cover w-full h-full"
-    />
-  </div>
+<div className="relative w-2/5 m-0 overflow-hidden text-gray-700 bg-white rounded-r-none shrink-0 rounded-xl bg-clip-border">
+                <img
+                    src={img}
+                    alt="image"
+                    className="object-cover opacity-80 w-full h-full"
+                />
+                <img className='absolute w-20 h-20 rounded-full top-4' src={logo} alt="" />
+            </div>
   <div className="p-6">
     {/* <h6 className="block mb-4 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-pink-500 uppercase">
       startups
@@ -65,7 +101,6 @@ const JobDetails = () => {
     <p className="block mb-8 font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
     {'Total applications: '+ applicants}
     </p>
-    <img className='w-12 h-12 rounded-full right-10 absolute' src={logo} alt="" />
     
     <button onClick={handleOpen} className="inline-block">
     <a  target="_blank"
@@ -100,19 +135,22 @@ const JobDetails = () => {
             <Typography className="-mb-2" variant="h6">
               User Name
             </Typography>
-            <Input name='name' label="Enter User Name" size="lg" type='text' defaultValue={user?.displayName}/>
+            <Input required name='name' label="Enter User Name" size="lg" type='text' defaultValue={user?.displayName}/>
             {/*  */}
             <Typography className="-mb-2" variant="h6">
               User Email
             </Typography>
-            <Input name='email' label="Enter User Email" size="lg" type='email' defaultValue={user?.email}/>
+            <Input required name='email' label="Enter User Email" size="lg" type='email' defaultValue={user?.email}/>
             {/*  */}
             <Typography className="-mb-2" variant="h6">
               Resume
             </Typography>
-            <Input name='resume' label="Enter Resume Link" size="lg" type='text'/>
+            <Input required name='resume' label="Enter Resume Link" size="lg" type='text'/>
 
-            <Button variant="gradient" type='submit' fullWidth>
+            <Button 
+            
+            disabled={employer === user.displayName}
+            variant="gradient" type='submit' fullWidth>
               Apply
             </Button>
           

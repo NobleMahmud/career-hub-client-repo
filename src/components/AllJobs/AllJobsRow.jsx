@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const AllJobsRow = ({allJob}) => {
-    const {employer, jobTitle, postingDate, applicationDeadline, salaryRange, applicantsNumber, bannerImageUrl, jobCategory, jobDescription} = allJob;
+    const {_id, employer, jobTitle, postingDate, applicationDeadline, salaryRange, jobCategory, jobDescription} = allJob;
 
     const handleBookingConfirm = e =>{
         console.log(e);
@@ -29,9 +30,7 @@ const AllJobsRow = ({allJob}) => {
         <td>{applicationDeadline}</td>
         <td>{salaryRange}</td>
         <th>
-          { status==='confirm' ? <span className='text-primary font-bold'>Confirmed</span>
-          :
-            <button onClick={()=>handleBookingConfirm(_id)} className="btn btn-ghost btn-xs ">Details</button>}
+         <Link to={`/jobs/${_id}`}><button>Details</button></Link>
         </th>
       </tr>
     );
