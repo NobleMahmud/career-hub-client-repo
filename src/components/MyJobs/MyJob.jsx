@@ -1,3 +1,4 @@
+import { id } from 'date-fns/locale';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -13,10 +14,10 @@ const MyJob = ({job, handleDelete, handleUpdate}) => {
          {/* <Link to={`/jobs/${_id}`}><button>Details</button></Link> */}
          <div className='flex gap-4'>
          <button onClick={()=>handleDelete(_id)} className='btn'>Delete</button>
-         <button onClick={()=>handleUpdate(_id)} className='btn'>update</button>
+         <Link to={`/update/${_id}`}><button onClick={()=>handleUpdate(_id)} className='btn'>update</button></Link>
          </div>
         </th>
-        
+        {/* <Link to={`/update/${product._id}`} onClick={()=>handleUpdate(product._id)} ></Link> */}
         {/* <td>
             <div className="avatar">
               <div className=" rounded-full w-12 h-12">
@@ -27,10 +28,10 @@ const MyJob = ({job, handleDelete, handleUpdate}) => {
         </td> */}
         <td>{jobTitle}</td>
         <td>{jobCategory}</td>
-        <td>{jobDescription.slice(0,20)+'...'}</td>
+        <td>{jobDescription?.slice(0,20)+'...'}</td>
         <td>{salaryRange}</td>
-        <td>{img.slice(0,20)+'...'}</td>
-        <td>{logo.slice(0,20)+'...'}</td>
+        <td>{img?.slice(0,20)+'...'}</td>
+        <td>{logo?.slice(0,20)+'...'}</td>
         <td>{postingDate}</td>
         <td>{applicationDeadline}</td>
         

@@ -1,7 +1,11 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 
 const AppliedJob = ({job}) => {
-    const {_id, jobTitle, jobCategory, jobDescription,postingDate, applicationDeadline, salaryRange, applicants, img, logo} = job
+    const {_id, jobTitle, jobCategory, jobDescription,postingDate, applicationDeadline, salaryRange, applicants, img, logo} = job;
+
+
+   
     return (
         <div className="relative flex w-full max-w-[48rem] flex-row mx-auto my-10 rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
             <div className="relative w-2/5 m-0 overflow-hidden text-gray-700 bg-white rounded-r-none shrink-0 rounded-xl bg-clip-border">

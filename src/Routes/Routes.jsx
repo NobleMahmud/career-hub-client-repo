@@ -12,6 +12,7 @@ import Register from "../components/Register/Register";
 import JobDetails from "../components/JobDetails/JobDetails";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
+import Update from "../components/Update/Update";
 
   export const router = createBrowserRouter([
     {
@@ -54,6 +55,11 @@ import ErrorPage from "../components/ErrorPage/ErrorPage";
         {
           path: "/jobs/:id",
           element: <PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
+          loader: ({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
+        },
+        {
+          path: "/update/:id",
+          element: <Update></Update>,
           loader: ({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
         },
       ],

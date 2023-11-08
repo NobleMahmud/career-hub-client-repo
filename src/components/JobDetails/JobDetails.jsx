@@ -12,6 +12,7 @@ import {
     Checkbox,
   } from "@material-tailwind/react";
 import { AuthContext } from '../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const JobDetails = () => {
   
@@ -21,6 +22,18 @@ const JobDetails = () => {
   const {_id, employer, logo, jobTitle, postingDate, applicationDeadline, salaryRange, applicants, img, jobCategory, jobDescription} = job;
 
     console.log(_id, jobTitle);
+
+    const now = Date.now();
+    console.log(now);
+
+    const deadline= new Date(applicationDeadline);
+    if(now<deadline){
+      console.log('now is greater, deadline ache');
+    }
+    if(now>deadline){
+      console.log('deadline gone');
+    }
+    
 
     const handleApply = e =>{
         e.preventDefault();
@@ -62,6 +75,30 @@ const JobDetails = () => {
       }
     })
 
+    // 
+
+    const updatedJob = {_id}
+    console.log(updatedJob);
+    fetch(`http://localhost:5000/jobs/${_id}`,{
+        method: 'PATCH',
+        headers:{
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(updatedJob)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        console.log(data);
+        if(data.modifiedCount>0){
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Update Successful!',
+              })
+        }
+    })
+
+
         handleOpen()
     }
 
@@ -99,10 +136,15 @@ const JobDetails = () => {
       {'Salary range: '+ salaryRange}
     </p>
     <p className="block mb-8 font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
+      {'Application Deadline: '+ applicationDeadline}
+    </p>
+    <p className="block mb-8 font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
     {'Total applications: '+ applicants}
     </p>
     
-    <button onClick={handleOpen} className="inline-block">
+    <button 
+    disabled = {now>deadline}
+    onClick={handleOpen} className="inline-block">
     <a  target="_blank"
 	className="group relative overflow-hidden bg-blue-600 focus:ring-4 focus:ring-blue-300 inline-flex items-center px-7 py-2.5 rounded-lg text-white justify-center">
 	<span className="z-40">Apply</span>

@@ -33,7 +33,7 @@ const PostJob = () => {
 
         // deadline date
         // job applicant number
-        const applicants = form.applicants.value;
+        const applicants = +form.applicants.value;
 
         const dateS = {
             month: ""
