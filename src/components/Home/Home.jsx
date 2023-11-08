@@ -32,7 +32,7 @@ const Home = () => {
                 </div>  
             <div className='mt-32'>
                 <div className='flex flex-col lg:flex-row'>
-                <h2 className='font-bold text-5xl lg:mt-28 justify-center text-center'><span className='text-blue-900'>Dive deep</span> into different types of <span className='text-[#545454]'>JOBS</span></h2>
+                <h2 className='font-bold text-5xl lg:mt-28 justify-center text-center'><span className='text-blue-900'>Discover Your Next Opportunity! Find Your  <span className='text-[#545454]'>Perfect Career</span></span>  Path From Our Diverse Job Categories</h2>
                 <img className='w-[300px] mx-auto lg:w-4/12 rounded-full justify-end items-end' src="https://i.ibb.co/jZVtFtD/animated8.gif" alt="" />
                 </div>
             <JobTab jobs={jobs}></JobTab>

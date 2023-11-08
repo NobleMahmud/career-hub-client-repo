@@ -9,7 +9,7 @@ import {
   import React, { useContext, useEffect, useState } from "react";
   import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
-import logo from '../../../public/Career Hub 7.mp4'
+import logo from '../../../public/Career Hub 9.mp4'
 import './nav.css'
 
   
@@ -67,12 +67,11 @@ import './nav.css'
         as="li"
         variant="small"
         color="blue-gray"
-        className="p-1 font-normal"
       >
         <NavLink to="/" 
-        className={({ isActive, isPending }) =>
-        isPending ? "pending" : isActive ? " font-bold  rounded text-blue-600 py-2 px-3 bg-gray-200" : "font-bold text-gray-600 "
-      }
+         className={({ isActive, isPending }) =>
+         isPending ? "pending" : isActive ? " bg-blue-500 font-bold text-white px-2 py-2 rounded" : " font-semibold text-gray-600 "
+       }
         >
           Home
         </NavLink>
@@ -81,11 +80,10 @@ import './nav.css'
         as="li"
         variant="small"
         color="blue-gray"
-        className="p-1 font-normal"
       >
         <NavLink to="/blogs" 
          className={({ isActive, isPending }) =>
-         isPending ? "pending" : isActive ? " font-bold  rounded text-blue-600 py-2 px-3 bg-gray-200" : "font-bold text-gray-600 "
+         isPending ? "pending" : isActive ? " bg-blue-500 font-bold text-white px-2 py-2 rounded" : " font-semibold text-gray-600 "
        }
         >
           Blogs
@@ -95,12 +93,11 @@ import './nav.css'
         as="li"
         variant="small"
         color="blue-gray"
-        className="p-1 font-normal"
       >
         <NavLink to="/alljobs" 
-         className={({ isActive, isPending }) =>
-         isPending ? "pending" : isActive ? " font-bold  rounded text-blue-600 py-2 px-3 bg-gray-200" : "font-bold text-gray-600 "
-       }
+        className={({ isActive, isPending }) =>
+        isPending ? "pending" : isActive ? " bg-blue-500 font-bold text-white px-2 py-2 rounded" : " font-semibold text-gray-600 "
+      }
         >
           All Jobs
         </NavLink>
@@ -110,12 +107,11 @@ import './nav.css'
         as="li"
         variant="small"
         color="blue-gray"
-        className="p-1 font-normal"
       >
         <NavLink to="/postjob" 
-         className={({ isActive, isPending }) =>
-         isPending ? "pending" : isActive ? " font-bold  rounded text-blue-600 py-2 px-3 bg-gray-200" : "font-bold text-gray-600 "
-       }
+       className={({ isActive, isPending }) =>
+       isPending ? "pending" : isActive ? " bg-blue-500 font-bold text-white px-2 py-2 rounded" : " font-semibold text-gray-600 "
+     }
         >
           Post Job
         </NavLink>
@@ -128,12 +124,11 @@ import './nav.css'
         as="li"
         variant="small"
         color="blue-gray"
-        className="p-1 font-normal"
       >
         <NavLink to="/appliedjobs" 
-         className={({ isActive, isPending }) =>
-         isPending ? "pending" : isActive ? " font-bold  rounded text-blue-600 py-2 px-3 bg-gray-200" : "font-bold text-gray-600 "
-       }
+       className={({ isActive, isPending }) =>
+       isPending ? "pending" : isActive ? " bg-blue-500 font-bold text-white px-2 py-2 rounded" : " font-semibold text-gray-600 "
+     }
         >
           Applied Jobs
         </NavLink>
@@ -145,12 +140,11 @@ import './nav.css'
         as="li"
         variant="small"
         color="blue-gray"
-        className="p-1 font-normal"
       >
         <NavLink to="/myjobs" 
-          className={({ isActive, isPending }) =>
-          isPending ? "pending" : isActive ? " font-bold  rounded text-blue-600 py-2 px-3 bg-gray-200" : "font-bold text-gray-600 "
-        }
+         className={({ isActive, isPending }) =>
+         isPending ? "pending" : isActive ? " bg-blue-500 font-bold text-white px-2 py-2 rounded" : " font-semibold text-gray-600 "
+       }
         >
           My Jobs
         </NavLink>
@@ -164,24 +158,25 @@ import './nav.css'
   
     return (
       <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none py-0 px-0 lg:px-0 lg:py-0">
-        <div className="flex items-center text-blue-gray-900 bg-white">
+        <div className="flex items-center justify-between text-blue-gray-900 bg-white">
   
           {/* logo */}
           <Typography
             as="a"
             href="#"
-            className="mr-4 cursor-pointer py-1.5 font-medium"
+            className="mr-4 px-2 flex items-center cursor-pointer py-1.5 font-medium"
           >
-            <video controls autoPlay muted loop className='appearance-none w-1/5'>
+            <video controls autoPlay muted loop className='appearance-none w-20 h-20 rounded-full'>
                             <source src={logo} type="video/mp4"/>
                                 Your browser does not support the video tag.
                         </video>
+                        <h2 className="h-full w-24 justify-center font-bold text-sm text-center"><span className="text-[#545454] ">CAREER</span>-HUB</h2>
           </Typography>
           {/* logo end */}
   
   
           {/* nav options mechanism */}
-          <div className="flex flex-col gap-y-4 gap-x-0 mt-5 sm:flex-row sm:items-center sm:justify-end sm:gap-y-0 sm:gap-x-7 sm:mt-0 sm:pl-7">
+          <div className="flex flex-col gap-y-4 gap-x-0 mt-5 pr-10 sm:flex-row sm:items-center sm:justify-end sm:gap-y-0 sm:gap-x-7 sm:mt-0 sm:pl-7">
             <div className="mr-4 hidden lg:block">{navList}</div>
 
 
@@ -198,9 +193,9 @@ import './nav.css'
             {
               user ?
             <div className="items-center flex justify-between">
-              <div className="group relative">
-              <img  className="md:w-1/2 w-4/5 rounded-full" src={user.photoURL} alt="" />
-                <p className="absolute opacity-0   transition-opacity top-12 -left-3 group-hover:opacity-100 duration-300 hover:opacity-100 text-xs">{user?.displayName}</p>
+              <div className="group relative flex-1">
+              <img  className="md:w-12 md:h-12 w-12 h-12 mr-4 rounded-full" src={user.photoURL} alt="" />
+                <p className="absolute opacity-0   transition-opacity top-12 -left-6  group-hover:opacity-100 duration-300 hover:opacity-100 text-xs">{user?.displayName}</p>
               </div>
               <Button
               onClick={handleLogOut}
