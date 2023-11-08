@@ -1,217 +1,215 @@
-import { useContext, useState } from 'react';
-import Swal from 'sweetalert2';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 
-// import React, { useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { format } from 'date-fns';
 
-const PostJob = () => {
+const UpdateJob = () => {
+// 
+const [startDate, setStartDate] = useState(new Date());
+const [endDate, setEndDate] = useState(null);
 
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(null);
+const { user } = useContext(AuthContext);
+const email = user?.email;
+// 
 
-    const { user } = useContext(AuthContext);
-    const email = user?.email;
-    const handlePostJob = e => {
-        e.preventDefault();
-        const form = e.target;
-        const img = form.photo.value;
-        const logo = form.logo.value;
-        const jobTitle = form.title.value;
-        const employer = form.name.value;
-        const jobCategory = form.category.value;
-        const salaryMin = form.salaryMin.value;
-        const salaryMax = form.salaryMax.value;
+const handlePostJob = e => {
+    e.preventDefault();
+    const form = e.target;
+    const img = form.photo.value;
+    const logo = form.logo.value;
+    const jobTitle = form.title.value;
+    const employer = form.name.value;
+    const jobCategory = form.category.value;
+    const salaryMin = form.salaryMin.value;
+    const salaryMax = form.salaryMax.value;
 
-        const salaryRange = `$${salaryMin} - $${salaryMax}`
-        const jobDescription = form.description.value;
-        // posting date
-        // const postingDate = startDate;
-        // const applicationDeadline = endDate;
+    const salaryRange = `$${salaryMin} - $${salaryMax}`
+    const jobDescription = form.description.value;
+    // posting date
+    // const postingDate = startDate;
+    // const applicationDeadline = endDate;
 
-        // deadline date
-        // job applicant number
-        const applicants = form.applicants.value;
+    // deadline date
+    // job applicant number
+    const applicants = form.applicants.value;
 
-        const dateS = {
-            month: ""
-        }
-
-        const start = startDate.toString();
-        console.log(start.split(" "));
-        const dayNumber = start.split(" ")[1];
-        if (dayNumber.includes("Jan")) {
-            dateS.month = '01'
-            console.log(dateS);
-        }
-        if (dayNumber.includes("Feb")) {
-            dateS.month = '02'
-            console.log(dateS);
-        }
-        if (dayNumber.includes("Mar")) {
-            dateS.month = '03'
-            console.log(dateS);
-        }
-        if (dayNumber.includes("Apr")) {
-            dateS.month = '04'
-            console.log(dateS);
-        }
-        if (dayNumber.includes("May")) {
-            dateS.month = '05'
-            console.log(dateS);
-        }
-        if (dayNumber.includes("Jun")) {
-            dateS.month = '06'
-            console.log(dateS);
-        }
-        if (dayNumber.includes("Jul")) {
-            dateS.month = '07'
-            console.log(dateS);
-        }
-        if (dayNumber.includes("Aug")) {
-            dateS.month = '08'
-            console.log(dateS);
-        }
-        if (dayNumber.includes("Sep")) {
-            dateS.month = '09'
-            console.log(dateS);
-        }
-        if (dayNumber.includes("Oct")) {
-            dateS.month = '10'
-            console.log(dateS);
-        }
-        if (dayNumber.includes("Nov")) {
-            dateS.month = '11'
-            console.log(dateS);
-        }
-        if (dayNumber.includes("Dec")) {
-            dateS.month = '12'
-            console.log(dateS);
-        }
-
-        const day = start.split(" ")[2]
-        const year = start.split(" ")[3]
-        console.log(year);
-        const finalDateS = year + "-" + dateS.month.toString() + "-" + day;
-        console.log(finalDateS);
-
-        const dateE = {
-            month: ""
-        }
-
-        const end = endDate.toString();
-
-        const dayNumberE = end.split(" ")[1];
-        if (dayNumberE.includes("Jan")) {
-            dateE.month = '01'
-            console.log(dateE);
-        }
-        if (dayNumberE.includes("Feb")) {
-            dateE.month = '02'
-            console.log(dateE);
-        }
-        if (dayNumberE.includes("Mar")) {
-            dateE.month = '03'
-            console.log(dateE);
-        }
-        if (dayNumberE.includes("Apr")) {
-            dateE.month = '04'
-            console.log(dateE);
-        }
-        if (dayNumberE.includes("May")) {
-            dateE.month = '05'
-            console.log(dateE);
-        }
-        if (dayNumberE.includes("Jun")) {
-            dateE.month = '06'
-            console.log(dateE);
-        }
-        if (dayNumberE.includes("Jul")) {
-            dateE.month = '07'
-            console.log(dateE);
-        }
-        if (dayNumberE.includes("Aug")) {
-            dateE.month = '08'
-            console.log(dateE);
-        }
-        if (dayNumberE.includes("Sep")) {
-            dateE.month = '09'
-            console.log(dateE);
-        }
-        if (dayNumberE.includes("Oct")) {
-            dateE.month = '10'
-            console.log(dateE);
-        }
-        if (dayNumberE.includes("Nov")) {
-            dateE.month = '11'
-            console.log(dateE);
-        }
-        if (dayNumberE.includes("Dec")) {
-            dateE.month = '12'
-            console.log(dateE);
-        }
-
-        const dayE = end.split(" ")[2]
-        const yearE = end.split(" ")[3]
-        console.log(yearE);
-        const finalDateE = yearE + "-" + dateE.month.toString() + "-" + dayE;
-        console.log(finalDateE);
-
-        // console.log(date.month.toString());
-
-        const newJob = { employer, email, postingDate: finalDateS, applicationDeadline: finalDateE, img, logo, jobTitle, jobCategory, jobDescription, salaryRange, applicants }
-        console.log(newJob);
-        fetch('http://localhost:5000/jobs', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newJob)
-        })
-            .then(res => res.json())
-            .then(data => {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success',
-                    text: 'Product added successfully!',
-                })
-                console.log(data);
-            })
-
-        // post to userspostcollection
-
-        const posted = {
-            employer: user?.displayName,
-            email: user?.email,
-            logo,
-            jobTitle,
-            postingDate: finalDateS,
-            applicationDeadline: finalDateE,
-            salaryRange,
-            applicants,
-            img,
-            jobCategory,
-            jobDescription,
-        }
-
-        // fetch('http://localhost:5000/posted', {
-        //     method: 'POST',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(posted)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data);
-        //         if (data.insertedId) {
-        //             alert('order confirmed')
-        //         }
-        //     })
-
+    const dateS = {
+        month: ""
     }
+
+    const start = startDate.toString();
+    console.log(start.split(" "));
+    const dayNumber = start.split(" ")[1];
+    if (dayNumber.includes("Jan")) {
+        dateS.month = '01'
+        console.log(dateS);
+    }
+    if (dayNumber.includes("Feb")) {
+        dateS.month = '02'
+        console.log(dateS);
+    }
+    if (dayNumber.includes("Mar")) {
+        dateS.month = '03'
+        console.log(dateS);
+    }
+    if (dayNumber.includes("Apr")) {
+        dateS.month = '04'
+        console.log(dateS);
+    }
+    if (dayNumber.includes("May")) {
+        dateS.month = '05'
+        console.log(dateS);
+    }
+    if (dayNumber.includes("Jun")) {
+        dateS.month = '06'
+        console.log(dateS);
+    }
+    if (dayNumber.includes("Jul")) {
+        dateS.month = '07'
+        console.log(dateS);
+    }
+    if (dayNumber.includes("Aug")) {
+        dateS.month = '08'
+        console.log(dateS);
+    }
+    if (dayNumber.includes("Sep")) {
+        dateS.month = '09'
+        console.log(dateS);
+    }
+    if (dayNumber.includes("Oct")) {
+        dateS.month = '10'
+        console.log(dateS);
+    }
+    if (dayNumber.includes("Nov")) {
+        dateS.month = '11'
+        console.log(dateS);
+    }
+    if (dayNumber.includes("Dec")) {
+        dateS.month = '12'
+        console.log(dateS);
+    }
+
+    const day = start.split(" ")[2]
+    const year = start.split(" ")[3]
+    console.log(year);
+    const finalDateS = year + "-" + dateS.month.toString() + "-" + day;
+    console.log(finalDateS);
+
+    const dateE = {
+        month: ""
+    }
+
+    const end = endDate.toString();
+
+    const dayNumberE = end.split(" ")[1];
+    if (dayNumberE.includes("Jan")) {
+        dateE.month = '01'
+        console.log(dateE);
+    }
+    if (dayNumberE.includes("Feb")) {
+        dateE.month = '02'
+        console.log(dateE);
+    }
+    if (dayNumberE.includes("Mar")) {
+        dateE.month = '03'
+        console.log(dateE);
+    }
+    if (dayNumberE.includes("Apr")) {
+        dateE.month = '04'
+        console.log(dateE);
+    }
+    if (dayNumberE.includes("May")) {
+        dateE.month = '05'
+        console.log(dateE);
+    }
+    if (dayNumberE.includes("Jun")) {
+        dateE.month = '06'
+        console.log(dateE);
+    }
+    if (dayNumberE.includes("Jul")) {
+        dateE.month = '07'
+        console.log(dateE);
+    }
+    if (dayNumberE.includes("Aug")) {
+        dateE.month = '08'
+        console.log(dateE);
+    }
+    if (dayNumberE.includes("Sep")) {
+        dateE.month = '09'
+        console.log(dateE);
+    }
+    if (dayNumberE.includes("Oct")) {
+        dateE.month = '10'
+        console.log(dateE);
+    }
+    if (dayNumberE.includes("Nov")) {
+        dateE.month = '11'
+        console.log(dateE);
+    }
+    if (dayNumberE.includes("Dec")) {
+        dateE.month = '12'
+        console.log(dateE);
+    }
+
+    const dayE = end.split(" ")[2]
+    const yearE = end.split(" ")[3]
+    console.log(yearE);
+    const finalDateE = yearE + "-" + dateE.month.toString() + "-" + dayE;
+    console.log(finalDateE);
+
+    // console.log(date.month.toString());
+
+    const newJob = { employer, email, postingDate: finalDateS, applicationDeadline: finalDateE, img, logo, jobTitle, jobCategory, jobDescription, salaryRange, applicants }
+    console.log(newJob);
+    fetch('http://localhost:5000/jobs', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(newJob)
+    })
+        .then(res => res.json())
+        .then(data => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Product added successfully!',
+            })
+            console.log(data);
+        })
+
+    // post to userspostcollection
+
+    const posted = {
+        employer: user?.displayName,
+        email: user?.email,
+        logo,
+        jobTitle,
+        postingDate: finalDateS,
+        applicationDeadline: finalDateE,
+        salaryRange,
+        applicants,
+        img,
+        jobCategory,
+        jobDescription,
+    }
+
+    fetch('http://localhost:5000/posted', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(posted)
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if (data.insertedId) {
+                alert('order confirmed')
+            }
+        })
+
+}
+    // 
     return (
         <div>
             <div>
@@ -405,4 +403,4 @@ const PostJob = () => {
     );
 };
 
-export default PostJob;
+export default UpdateJob;

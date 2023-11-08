@@ -5,14 +5,37 @@ import MyJob from './MyJob';
 const MyJobs = () => {
     const [jobs, setJobs] = useState([]);
     const { user } = useContext(AuthContext);
+    
+
+    const handleDelete = id => {
+        const proceed = confirm ('are you sure?');
+       if(proceed){
+        fetch( `http://localhost:5000/jobs/${id}`, {
+          method: 'DELETE'
+        })
+        .then(res=>res.json())
+        .then(data=>{
+          console.log(data);
+          if(data.deletedCount>0){
+            alert('delete successful')
+          }
+          const remaining = jobs.filter(job=>job._id !==id);
+          setJobs(remaining)
+        })
+       }
+      }
+
+    const handleUpdate = id =>{
+        console.log(id);
+    }
 
     const email = user?.email;
-    const url = `http://localhost:5000/posted?email=${email}`
+    const url = `http://localhost:5000/jobs?email=${email}`
     useEffect(() => {
 
         // axios.get(url, {withCredentials: true})
         // .then(res=>{
-        //   setBookings(res.data);
+        //   setJobs(res.data);
         // })
 
         fetch(url)
@@ -23,10 +46,14 @@ const MyJobs = () => {
 
             })
     }, [url])
+
+    
+    
     return (
         
          <div>
-            {jobs.length>0 ?   <div className = "overflow-x-auto">
+            {jobs.length>0 ?   
+            <div className = "overflow-x-auto">
             < table className = "table" >
         {/* head */ }
         <thead>
@@ -47,7 +74,7 @@ const MyJobs = () => {
     <tbody>
 
         {
-            jobs.map((job, idx) => <MyJob key={idx} job={job}></MyJob>)
+            jobs.map((job, idx) => <MyJob key={idx} job={job} handleDelete={handleDelete} handleUpdate={handleUpdate}></MyJob>)
         }
 
     </tbody>

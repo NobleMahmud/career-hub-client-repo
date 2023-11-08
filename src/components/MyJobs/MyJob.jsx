@@ -1,16 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const MyJob = ({job}) => {
+const MyJob = ({job, handleDelete, handleUpdate}) => {
     const {_id, employer, jobTitle, img, logo, postingDate, applicationDeadline, salaryRange, jobCategory, jobDescription} = job;
    console.log(job);
+
+
+
     return (
         <tr>
             <th>
          {/* <Link to={`/jobs/${_id}`}><button>Details</button></Link> */}
          <div className='flex gap-4'>
-         <button className='btn'>delete</button>
-         <button className='btn'>update</button>
+         <button onClick={()=>handleDelete(_id)} className='btn'>Delete</button>
+         <button onClick={()=>handleUpdate(_id)} className='btn'>update</button>
          </div>
         </th>
         

@@ -31,6 +31,8 @@ const AppliedJob = ({job}) => {
 
             </div>
         </div>
+
+        
     );
 };
 

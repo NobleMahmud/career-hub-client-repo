@@ -25,11 +25,15 @@ const AppliedJobs = () => {
             })
     }, [url])
     return (
+       
+        jobs.length>0 ?
         <div>
             {
                 jobs.map((job, idx)=><AppliedJob key={idx} job={job}></AppliedJob>)
             }
         </div>
+        :
+         <img className='w-[60%] mx-auto' src='https://i.ibb.co/n0ZwyVD/5928293-2953962.jpg'></img>
     );
 };
 

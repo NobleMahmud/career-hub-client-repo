@@ -5,6 +5,7 @@ import RemoteCard from './RemoteCard';
 import HybridCard from './HybridCard';
 import PartTimeCard from './PartTimeCard';
 import AllJobsCard from './AllJobsCard';
+import Spinner from '../Spinner/Spinner';
 
 const JobTab = ({ jobs }) => {
     const onSite = jobs.filter(job => job.jobCategory === "On Site");
@@ -17,6 +18,7 @@ const JobTab = ({ jobs }) => {
         console.log(id);
     }
     return (
+        jobs.length > 0 ?
         <div>
             <Tabs>
                 <TabList>
@@ -71,6 +73,8 @@ const JobTab = ({ jobs }) => {
                 </TabPanel>
             </Tabs>
         </div>
+        :
+        <Spinner></Spinner>
     );
 };
 

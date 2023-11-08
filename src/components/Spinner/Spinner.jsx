@@ -1,48 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import AllJobsRow from './AllJobsRow';
+import React from 'react';
 
-const AllJobs = () => {
-    const [allJobs, setAllJobs] = useState([]);
-    useEffect(()=>{
-        fetch('http://localhost:5000/jobs')
-    .then(res=>res.json())
-    .then(data=>{
-        console.log(data);
-        setAllJobs(data)
-
-    })
-    },[])
-    console.log(allJobs.length);
+const Spinner = () => {
     return (
-       
-        allJobs.length>0 ?
-        <div className="overflow-x-auto">
-        <table className="table">
-          {/* head */}
-          <thead>
-            <tr>
-              <th>
-              </th>
-              <th>Posted By</th>
-              <th>Title</th>
-              <th>Posting Date</th>
-              <th>Deadline</th>
-              <th>Salary Range</th>
-            </tr>
-          </thead>
-          <tbody>
-  
-            {
-              allJobs.map((allJob, idx) => <AllJobsRow  key={idx} allJob={allJob}></AllJobsRow>)
-            }
-  
-          </tbody>
-  
-  
-        </table>
-      </div>
-      :
-      <section className="bg-white dark:bg-gray-900">
+        <section className="bg-white dark:bg-gray-900">
         <div className="container px-6 py-10 mx-auto animate-pulse">
             <h1 className="w-48 h-2 mx-auto bg-gray-200 rounded-lg dark:bg-gray-700"></h1>
     
@@ -73,9 +33,7 @@ const AllJobs = () => {
             </div>
         </div>
     </section>
-
-      
     );
 };
 
-export default AllJobs;
+export default Spinner;
