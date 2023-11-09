@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import MyJob from './MyJob';
+import Swal from 'sweetalert2';
 
 const MyJobs = () => {
     const [jobs, setJobs] = useState([]);
@@ -8,29 +9,59 @@ const MyJobs = () => {
     
 
     const handleDelete = id => {
-        const proceed = confirm ('are you sure?');
-       if(proceed){
-        fetch( `http://localhost:5000/jobs/${id}`, {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed){
+        fetch( `https://career-hub-server-steel.vercel.app/jobs/${id}`, {
           method: 'DELETE'
         })
         .then(res=>res.json())
         .then(data=>{
           console.log(data);
           if(data.deletedCount>0){
-            alert('delete successful')
+            Swal.fire({
+                title: "Deleted!",
+                text: "The job has been removed.",
+                icon: "success"
+              })
           }
           const remaining = jobs.filter(job=>job._id !==id);
           setJobs(remaining)
         })
        }
-      }
+      })
+    }
+    // const handleDelete = id => {
+    //     const proceed = confirm ('are you sure?');
+    //    if(proceed){
+    //     fetch( `https://career-hub-server-steel.vercel.app/jobs/${id}`, {
+    //       method: 'DELETE'
+    //     })
+    //     .then(res=>res.json())
+    //     .then(data=>{
+    //       console.log(data);
+    //       if(data.deletedCount>0){
+    //         alert('delete successful')
+    //       }
+    //       const remaining = jobs.filter(job=>job._id !==id);
+    //       setJobs(remaining)
+    //     })
+    //    }
+    //   }
 
     const handleUpdate = id =>{
         console.log(id);
     }
 
     const email = user?.email;
-    const url = `http://localhost:5000/jobs?email=${email}`
+    const url = `https://career-hub-server-steel.vercel.app/jobs?email=${email}`
     useEffect(() => {
 
         // axios.get(url, {withCredentials: true})

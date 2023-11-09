@@ -1,81 +1,97 @@
 import React, { useEffect, useState } from 'react';
 import AllJobsRow from './AllJobsRow';
+import Search from '../Home/Search';
+import Spinner from '../Spinner/Spinner';
+import { Input } from "@material-tailwind/react";
 
 const AllJobs = () => {
-    const [allJobs, setAllJobs] = useState([]);
-    useEffect(()=>{
-        fetch('http://localhost:5000/jobs')
-    .then(res=>res.json())
-    .then(data=>{
+ 
+  const [allJobs, setAllJobs] = useState([]);
+  useEffect(() => {
+    fetch('https://career-hub-server-steel.vercel.app/jobs')
+      .then(res => res.json())
+      .then(data => {
         console.log(data);
         setAllJobs(data)
+        setLoadJob(data)
+      })
+  }, [])
+  console.log(allJobs.length);
 
-    })
-    },[])
-    console.log(allJobs.length);
-    return (
-       
-        allJobs.length>0 ?
+  // const [searchResult, setSearchResult] = useState(null);
+  const [loadJob, setLoadJob] = useState(null)
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const search = form.search.value;
+
+    // setSearchResult(search);
+    // console.log(search, searchResult);
+    
+    const searchByTitle = allJobs.filter(result=>result.jobTitle == search);
+    console.log(searchByTitle);
+    setLoadJob(searchByTitle)
+
+    console.log('loadJob: ', loadJob, 'allJobs :', allJobs );
+
+   
+
+
+  }
+
+
+
+  return (
+
+    allJobs.length > 0 ?
+      <div>
+        <div className='mt-2 ml-2'>
+          {/* search */}
+          <div>
+            <div className="w-60 relative">
+              <form onSubmit={handleSearch}>
+                <Input name='search' label="Search by title"/>
+                  <button className='absolute left-52 -mt-[29px]'><svg xmlns="http://www.w3.org/2000/svg"
+                    fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"
+                    className="w-6 h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                  </svg></button>
+              </form>
+            </div>
+          </div>
+          {/* search */}
+        </div>
         <div className="overflow-x-auto">
-        <table className="table">
-          {/* head */}
-          <thead>
-            <tr>
-              <th>
-              </th>
-              <th>Posted By</th>
-              <th>Title</th>
-              <th>Posting Date</th>
-              <th>Deadline</th>
-              <th>Salary Range</th>
-            </tr>
-          </thead>
-          <tbody>
-  
-            {
-              allJobs.map((allJob, idx) => <AllJobsRow  key={idx} allJob={allJob}></AllJobsRow>)
-            }
-  
-          </tbody>
-  
-  
-        </table>
+          <table className="table">
+            {/* head */}
+            <thead>
+              <tr>
+                <th>
+                </th>
+                <th>Posted By</th>
+                <th>Title</th>
+                <th>Posting Date</th>
+                <th>Deadline</th>
+                <th>Salary Range</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {
+                loadJob.map((allJob, idx) => <AllJobsRow key={idx} allJob={allJob}></AllJobsRow>)
+              }
+
+            </tbody>
+
+
+          </table>
+        </div>
       </div>
       :
-      <section className="bg-white dark:bg-gray-900">
-        <div className="container px-6 py-10 mx-auto animate-pulse">
-            <h1 className="w-48 h-2 mx-auto bg-gray-200 rounded-lg dark:bg-gray-700"></h1>
-    
-            <p className="w-64 h-2 mx-auto mt-4 bg-gray-200 rounded-lg dark:bg-gray-700"></p>
-            <p className="w-64 h-2 mx-auto mt-4 bg-gray-200 rounded-lg sm:w-80 dark:bg-gray-700"></p>
-    
-            <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 sm:grid-cols-2 lg:grid-cols-3">
-                <div className="w-full ">
-                    <div className="w-full h-64 bg-gray-300 rounded-lg md:h-72 dark:bg-gray-600"></div>
-                    
-                    <h1 className="w-56 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700"></h1>
-                    <p className="w-24 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700"></p>
-                </div>
-    
-                <div className="w-full ">
-                    <div className="w-full h-64 bg-gray-300 rounded-lg md:h-72 dark:bg-gray-600"></div>
-                    
-                    <h1 className="w-56 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700"></h1>
-                    <p className="w-24 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700"></p>
-                </div>
-    
-                <div className="w-full ">
-                    <div className="w-full h-64 bg-gray-300 rounded-lg md:h-72 dark:bg-gray-600"></div>
-                    
-                    <h1 className="w-56 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700"></h1>
-                    <p className="w-24 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700"></p>
-                </div>
-            </div>
-        </div>
-    </section>
+      <Spinner></Spinner>
 
-      
-    );
+
+  );
 };
 
 export default AllJobs;

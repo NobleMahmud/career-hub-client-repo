@@ -1,10 +1,29 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const AllJobsRow = ({allJob}) => {
     const {_id, employer, jobTitle, postingDate, applicationDeadline, salaryRange, jobCategory, jobDescription} = allJob;
+    const {user} = useContext(AuthContext);
 
-  
+    const navigate = useNavigate();
+
+
+  const handleJob = ()=>{
+    {
+      user ? navigate(`/jobs/${_id}`)
+      :
+      Swal.fire({
+        title: "The Internet?",
+        text: "That thing is still around?",
+        icon: "question"
+      });
+      navigate(`/jobs/${_id}`)
+    }
+   
+    
+  }
     return (
         <tr>
         <th>
@@ -28,7 +47,8 @@ const AllJobsRow = ({allJob}) => {
         <td>{applicationDeadline}</td>
         <td>{salaryRange}</td>
         <th>
-         <Link to={`/jobs/${_id}`}><button>Details</button></Link>
+         {/* <Link to={`/jobs/${_id}`}><button>Details</button></Link> */}
+         <button onClick={handleJob}>Details</button>
         </th>
       </tr>
     );

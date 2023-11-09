@@ -60,7 +60,7 @@ const JobDetails = () => {
           applicants
         }
 
-        fetch('http://localhost:5000/applied',{
+        fetch('https://career-hub-server-steel.vercel.app/applied',{
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -71,7 +71,7 @@ const JobDetails = () => {
     .then(data=>{
       console.log(data);
       if(data.insertedId){
-        alert('order confirmed')
+        // alert('order confirmed')
       }
     })
 
@@ -79,7 +79,7 @@ const JobDetails = () => {
 
     const updatedJob = {_id}
     console.log(updatedJob);
-    fetch(`http://localhost:5000/jobs/${_id}`,{
+    fetch(`https://career-hub-server-steel.vercel.app/jobs/${_id}`,{
         method: 'PATCH',
         headers:{
             'content-type': 'application/json'
@@ -93,7 +93,7 @@ const JobDetails = () => {
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
-                text: 'Update Successful!',
+                text: 'Apply Successful!',
               })
         }
     })
@@ -129,11 +129,17 @@ const JobDetails = () => {
     <h4 className="block mb-2 font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
       {'Post: '+jobTitle}
     </h4>
+    <p className="block mb-4 font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
+      {'Posted By: '+employer}
+    </p>
     <p className="block mb-8 font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
       {jobDescription}
     </p>
     <p className="block mb-8 font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
       {'Salary range: '+ salaryRange}
+    </p>
+    <p className="block mb-8 font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
+      {'Posting Date: '+ postingDate}
     </p>
     <p className="block mb-8 font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
       {'Application Deadline: '+ applicationDeadline}

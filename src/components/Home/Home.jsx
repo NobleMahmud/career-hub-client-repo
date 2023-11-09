@@ -7,7 +7,7 @@ const Home = () => {
     const [ jobs, setJobs] = useState([]);
     
     useEffect(()=>{
-        fetch('http://localhost:5000/jobs')
+        fetch('https://career-hub-server-steel.vercel.app/jobs')
     .then(res=>res.json())
     .then(data=>{
         console.log(data);

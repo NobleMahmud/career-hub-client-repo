@@ -163,7 +163,7 @@ const PostJob = () => {
 
         const newJob = { employer, email, postingDate: finalDateS, applicationDeadline: finalDateE, img, logo, jobTitle, jobCategory, jobDescription, salaryRange, applicants }
         console.log(newJob);
-        fetch('http://localhost:5000/jobs', {
+        fetch('https://career-hub-server-steel.vercel.app/jobs', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -175,7 +175,7 @@ const PostJob = () => {
                 Swal.fire({
                     icon: 'success',
                     title: 'Success',
-                    text: 'Product added successfully!',
+                    text: 'Job posted successfully!',
                 })
                 console.log(data);
             })
@@ -196,7 +196,7 @@ const PostJob = () => {
             jobDescription,
         }
 
-        // fetch('http://localhost:5000/posted', {
+        // fetch('https://career-hub-server-steel.vercel.app/posted', {
         //     method: 'POST',
         //     headers: {
         //         'content-type': 'application/json'

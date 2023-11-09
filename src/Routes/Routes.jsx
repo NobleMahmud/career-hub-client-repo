@@ -1,7 +1,6 @@
 import {
     createBrowserRouter} from "react-router-dom";
 import LayOut from "../LayOut/LayOut";
-import Blogs from "../components/Blogs/Blogs";
 import Home from "../components/Home/Home";
 import AllJobs from "../components/AllJobs/AllJobs";
 import PostJob from "../components/PostJob/PostJob";
@@ -13,6 +12,7 @@ import JobDetails from "../components/JobDetails/JobDetails";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import Update from "../components/Update/Update";
+import BlogLayOut from "../components/Blogs/BlogLayOut";
 
   export const router = createBrowserRouter([
     {
@@ -26,7 +26,7 @@ import Update from "../components/Update/Update";
         },
         {
           path: "/blogs",
-          element: <Blogs></Blogs>,
+          element: <BlogLayOut></BlogLayOut>
         },
         {
           path: "/alljobs",
@@ -55,12 +55,12 @@ import Update from "../components/Update/Update";
         {
           path: "/jobs/:id",
           element: <PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
-          loader: ({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
+          loader: ({params})=>fetch(`https://career-hub-server-steel.vercel.app/jobs/${params.id}`)
         },
         {
           path: "/update/:id",
           element: <Update></Update>,
-          loader: ({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
+          loader: ({params})=>fetch(`https://career-hub-server-steel.vercel.app/jobs/${params.id}`)
         },
       ],
     },
