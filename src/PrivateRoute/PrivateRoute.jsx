@@ -1,12 +1,21 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
+import Swal from 'sweetalert2';
+// import { useEffect } from 'react/cjs/react.production.min';
 
 const PrivateRoute = ({children}) => {
     const location = useLocation();
     console.log(location.pathname);
     const {user, loading} = useContext(AuthContext);
+    useEffect(()=>{
+        Swal.fire({
+            title: "User not found",
+            text: "You have to login first to view details",
+            icon: "question"
+          });
+    },[])
     if(loading){
         return <section className="bg-white dark:bg-gray-900">
         <div className="container px-6 py-10 mx-auto animate-pulse">
