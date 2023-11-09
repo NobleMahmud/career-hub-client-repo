@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import animated from '../../../public/animated5.gif'
 import Search from './Search';
 import JobTab from '../JobTab/JobTab';
+import Testimonial from '../Testimonial/Testimonial';
+import AboutUs from '../AboutUs/AboutUs';
 
 const Home = () => {
     const [ jobs, setJobs] = useState([]);
@@ -37,6 +39,8 @@ const Home = () => {
                 </div>
             <JobTab jobs={jobs}></JobTab>
             </div>
+            <AboutUs></AboutUs>
+            <Testimonial></Testimonial>
         </div>
     );
 };

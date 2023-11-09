@@ -14,7 +14,6 @@ Description: Career-HUB is a job posting and job hiring website that allows user
 -Job posting and management
 -Applicant tracking
 -Download applicant summary pdf
--Dark Mode
 
 ### 1. User Registration
 
@@ -39,5 +38,3 @@ Description: Career-HUB is a job posting and job hiring website that allows user
 ### 5.Job Pages
 - Job Details Pages: Clicking on a job view details button redirects users to a job-specific page that includes information about the job. The route is private/protected, and unauthorized users are redirected to the login page.
 
-### 6.Dark Mode
-- The Dark Mode Option lets the user toggle between light and dark mode.
